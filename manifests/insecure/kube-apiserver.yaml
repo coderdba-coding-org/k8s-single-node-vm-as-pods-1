@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    scheduler.alpha.kubernetes.io/critical-pod: ""
+  labels:
+    component: kube-apiserver
+    tier: control-plane
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  hostNetwork: true
+  containers:
+  - command:
+    - kube-apiserver
+    - --advertise-address=192.168.60.102
+    - --insecure-bind-address=127.0.0.1
+    - --bind-address=0.0.0.0
+    - --etcd-servers=http://192.168.60.102:2379
+    - --service-cluster-ip-range=10.96.0.0/12
+    - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
+    image: gcr.io/google_containers/kube-apiserver-amd64:v1.12.8
+    name: kube-apiserver

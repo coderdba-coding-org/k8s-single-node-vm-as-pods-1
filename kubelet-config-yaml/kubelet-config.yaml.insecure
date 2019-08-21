@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Config
+#apiVersion: k8s.io/kubelet/config/v1beta1
+#apiVersion: v1beta1
+clusters:
+- cluster:
+    server: http://127.0.0.1:8080
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: system:node:ks2
+  name: system:node:ks2@kubernetes
+current-context: system:node:ks2@kubernetes
+#kind: KubeletConfiguration
+preferences: {}
+users:
+- name: system:node:ks2

@@ -1,0 +1,3 @@
+location:  
+/usr/lib/systemd/system/kubelet.service --> service definition
+/usr/lib/systemd/system/kubelet.service.d --> 10-kubeadm.conf file
