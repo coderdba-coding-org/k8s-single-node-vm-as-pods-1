@@ -14,4 +14,9 @@ EnvironmentFile=-/var/lib/kubelet/kubeadm-flags.env
 # the .NodeRegistration.KubeletExtraArgs object in the configuration files instead. KUBELET_EXTRA_ARGS should be sourced from this file.
 EnvironmentFile=-/etc/sysconfig/kubelet
 ExecStart=
+#
+# Without CNI overlay network
 ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS   --client-ca-file=/etc/kubernetes/pki/ca.pem --tls-cert-file=/etc/kubernetes/pki/192.168.60.102.pem --tls-private-key-file=/etc/kubernetes/pki/192.168.60.102-key.pem --kubeconfig=/etc/kubernetes/kubelet-kubeconfig --allow-privileged=true
+# 
+# With CNI overlay network
+#ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS   --client-ca-file=/etc/kubernetes/pki/ca.pem --tls-cert-file=/etc/kubernetes/pki/192.168.60.102.pem --tls-private-key-file=/etc/kubernetes/pki/192.168.60.102-key.pem --kubeconfig=/etc/kubernetes/kubelet-kubeconfig --allow-privileged=true --network-plugin=cni
